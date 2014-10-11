@@ -8,7 +8,7 @@
 
 #import "STEPluginManager.h"
 
-#import <Python/Python.h>
+#include <Python.h>
 
 
 @interface NSObject (PythonPluginInterface)
