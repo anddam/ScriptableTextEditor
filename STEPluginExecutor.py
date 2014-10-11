@@ -12,19 +12,19 @@ from AppKit import *
 import imp
 
 class STEPluginExecutor(NSObject):
-	@classmethod
-	def loadModuleAtPath_functionName_arguments_(self, path, func, args):
-		
-		f = open(path)
-		try:
-			mod = imp.load_module('plugin', f, path, (".py", "r", imp.PY_SOURCE))
-			realfunc = getattr(mod, func, None)
-			if realfunc is not None:
-				realfunc(*tuple(args))
-		except Exception as e:
-			NSRunAlertPanel('Script Error', '%s' % e, None, None, None)
-			return NO
-		finally:
-			f.close()
-		
-		return YES
+    @classmethod
+    def loadModuleAtPath_functionName_arguments_(self, path, func, args):
+        
+        f = open(path)
+        try:
+            mod = imp.load_module('plugin', f, path, (".py", "r", imp.PY_SOURCE))
+            realfunc = getattr(mod, func, None)
+            if realfunc is not None:
+                realfunc(*tuple(args))
+        except Exception as e:
+            NSRunAlertPanel('Script Error', '%s' % e, None, None, None)
+            return NO
+        finally:
+            f.close()
+        
+        return YES
